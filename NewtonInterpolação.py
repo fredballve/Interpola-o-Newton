@@ -6,7 +6,7 @@ delta=[[]]          #Lista que contém listas, primeira camada é o número do d
 x = symbols('x')    #função para utilizar o x como um símbolo
 
 ### Função para calcular cada valor de delta
-def deltas(numdelta):
+def calcdeltas(numdelta):
   for i in range(tam):
     if i<tam-1 and len(delta)<=1:                                     #Para o delta 1
       delta[numdelta].append((incY[i+1]-incY[i])/(incX[i+1]-incX[i])) #Adiciona o valor na lista dentro do delta[0]
@@ -29,14 +29,14 @@ def deltas(numdelta):
 
 ### Input para os valores
 tam=int(input("Digite a quantidade de pontos: "))
-for i in range(tam):                                        #for que roda tam vezes, o i é igual a vez
+for i in range(tam):                                        #for que roda "tam" vezes
   incX.append(float(input(f"Digite o valor de X{i}: ")))    #transforma o valor do input de string para float e
   incY.append(float(input(f"Digite o valor de Y{i}: ")))    #o adiciona a lista
 
 ### Loop para pegar cada "camada" do delta (delta1, delta2...)
 for i in range(tam-1):
   print(f"Valores de Delta {i+1}:")
-  deltas(i)                         #chama a função deltas
+  calcdeltas(i)                         #chama a função calcdeltas
   delta.append([])                  #aumenta o tamanho da lista "delta"
 delta.pop()                         #remove o último elemento da lista "delta" que esta vazio ao sair do loop
 
